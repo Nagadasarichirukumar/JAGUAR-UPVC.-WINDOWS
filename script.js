@@ -25,22 +25,39 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // Add floating element effect on product cards on hover (already css), also smooth anchor
-const allBtns = document.querySelectorAll('.btn-primary, .btn-outline, .nav-links a');
-allBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        if (btn.getAttribute('href') === '#') {
+// SPA Navigation
+const pageAnchors = document.querySelectorAll('a[href^="#"]');
+const pages = document.querySelectorAll('.page-section');
+
+pageAnchors.forEach(item => {
+    item.addEventListener('click', (e) => {
+        const href = item.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+
+        const targetId = href.substring(1);
+        const targetPage = document.getElementById(targetId);
+
+        if (targetPage && targetPage.classList.contains('page-section')) {
             e.preventDefault();
-            // just demo: scroll to contact section if needed but we just show alert for demo?
-            if(btn.innerText.includes('Quote')) {
-                document.querySelector('.contact-section').scrollIntoView({ behavior: 'smooth' });
-            } else if(btn.innerText.includes('Gallery')) {
-                alert('✨ Premium Gallery: We will showcase stunning Jaguar UPVC installations soon.\n📞 Contact for live demonstration.');
-            } else {
-                // for nav home we scroll top
-                if(btn.innerText.trim() === 'Home') window.scrollTo({top:0, behavior:'smooth'});
-                else if(btn.innerText === 'Contact') document.querySelector('.contact-section').scrollIntoView({behavior:'smooth'});
-                else if(btn.innerText === 'Products') document.querySelector('.cards-grid').scrollIntoView({behavior:'smooth'});
+
+            // Update active nav link if this is a nav item
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(nav => nav.classList.remove('active'));
+            if (item.classList.contains('nav-item')) {
+                item.classList.add('active');
             }
+
+            // Hide all pages, show target
+            pages.forEach(page => {
+                page.style.display = 'none';
+                page.classList.remove('active');
+            });
+
+            targetPage.style.display = 'block';
+            setTimeout(() => {
+                targetPage.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 50);
         }
     });
 });
@@ -71,41 +88,113 @@ cards.forEach((card, idx) => {
     });
 });
 
-// tiny dynamic counter (just for visual fun on stats)
-const counters = document.querySelectorAll('h3');
-// not all h3 will be numbers but for the stats we can manually set: but simpler - skip heavy counter, but add subtle floating pulse
-const statsBlocks = document.querySelectorAll('div[style*="flex:1"] h3');
-if(statsBlocks.length) {
-    statsBlocks.forEach(block => {
-        const originalText = block.innerText;
-        if(originalText.includes('5000+') || originalText.includes('#1') || originalText.includes('15+') || originalText.includes('10 Year')) {
-            // just decoration, keep as is but add hover pulse
-            block.style.transition = '0.2s';
-            block.parentElement.addEventListener('mouseenter', () => {
-                block.style.transform = 'scale(1.03)';
-            });
-            block.parentElement.addEventListener('mouseleave', () => {
-                block.style.transform = 'scale(1)';
-            });
+// Number counter animation
+const statNumbers = document.querySelectorAll('.stat-number');
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const target = parseInt(entry.target.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 60; // adjust speed
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    entry.target.innerText = Math.ceil(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    entry.target.innerText = target.toLocaleString() + (target === 50000 ? '+' : '');
+                }
+            };
+            updateCounter();
+            statObserver.unobserve(entry.target);
         }
     });
-}
+}, { threshold: 0.5 });
+
+statNumbers.forEach(stat => {
+    statObserver.observe(stat);
+});
 
 // extra: make phone numbers clickable (call suggestion)
 const phoneNumbers = document.querySelectorAll('.contact-item:first-child .contact-item div strong');
 // but easier: we modify contact links
 const phoneLinks = document.querySelectorAll('.contact-item i.fa-phone-alt, .contact-item i.fa-phone-alt + div');
 const phoneDiv = document.querySelector('.contact-item div strong')?.parentElement;
-if(phoneDiv) {
+if (phoneDiv) {
     const numbers = phoneDiv.innerText.split(',');
-    if(numbers.length) {
+    if (numbers.length) {
         phoneDiv.style.cursor = 'pointer';
         phoneDiv.addEventListener('click', () => {
-            window.location.href = `tel:${numbers[0].replace(/\D/g,'')}`;
+            window.location.href = `tel:${numbers[0].replace(/\D/g, '')}`;
         });
     }
 }
 const secondPhone = document.querySelector('.contact-item i.fa-phone-alt')?.parentElement;
-if(secondPhone) secondPhone.style.cursor = 'pointer';
+if (secondPhone) secondPhone.style.cursor = 'pointer';
 // extra for address copy? not needed, but nice.
 console.log('Jaguar UPVC website loaded with premium animations');
+
+// --- Brochure Auto-scroll ---
+const brochureContainer = document.querySelector('.brochure-container-vertical');
+let brochureScrollInterval;
+let brochureScrollSpeed = 1;
+
+function startBrochureScroll() {
+    if(!brochureContainer) return;
+    brochureScrollInterval = setInterval(() => {
+        brochureContainer.scrollTop += brochureScrollSpeed;
+        // Check if reached bottom
+        if (brochureContainer.scrollTop + brochureContainer.clientHeight >= brochureContainer.scrollHeight - 1) {
+            brochureContainer.scrollTop = 0;
+        }
+    }, 30);
+}
+
+function stopBrochureScroll() {
+    clearInterval(brochureScrollInterval);
+}
+
+if(brochureContainer) {
+    // wait a moment before starting to allow rendering
+    setTimeout(startBrochureScroll, 1000);
+    brochureContainer.addEventListener('mouseenter', stopBrochureScroll);
+    brochureContainer.addEventListener('mouseleave', startBrochureScroll);
+    brochureContainer.addEventListener('touchstart', stopBrochureScroll);
+    brochureContainer.addEventListener('touchend', startBrochureScroll);
+}
+
+// --- Fullscreen Image Modal ---
+const modalOverlay = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-img');
+const closeModal = document.querySelector('.close-image-modal');
+const zoomableImages = document.querySelectorAll('.zoomable img');
+
+if(modalOverlay && modalImg && closeModal) {
+    zoomableImages.forEach(img => {
+        img.addEventListener('click', () => {
+            modalImg.src = img.src;
+            modalOverlay.style.display = 'flex';
+            // small delay for transition
+            setTimeout(() => {
+                modalOverlay.classList.add('show');
+            }, 10);
+        });
+    });
+
+    closeModal.addEventListener('click', () => {
+        modalOverlay.classList.remove('show');
+        setTimeout(() => {
+            modalOverlay.style.display = 'none';
+        }, 300);
+    });
+
+    // click outside to close
+    modalOverlay.addEventListener('click', (e) => {
+        if(e.target === modalOverlay) {
+            modalOverlay.classList.remove('show');
+            setTimeout(() => {
+                modalOverlay.style.display = 'none';
+            }, 300);
+        }
+    });
+}
