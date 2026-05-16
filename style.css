@@ -78,10 +78,15 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    margin-bottom: 2rem;
+    padding: 0.8rem 2.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-bottom: 2.5rem;
+    border-radius: 60px;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .logo-area {
@@ -104,11 +109,31 @@ body {
 }
 
 .site-logo {
-    height: 60px;
-    width: 60px;
+    height: 90px;
+    width: auto;
+    max-width: 350px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.hero-image-card {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 0 25px 60px rgba(0, 76, 136, 0.12);
+    border: 1px solid #dbeafe;
+    background: #ffffff;
+}
+
+.hero-image {
+    width: 100%;
+    display: block;
     object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #00E5FF;
 }
 
 .upvc-badge {
@@ -124,16 +149,19 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
+    align-items: center;
 }
 
 .nav-links a {
     color: #eef5ff;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: 0.3s;
-    font-size: 1rem;
+    font-size: 0.95rem;
     position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .nav-links a:hover {
@@ -183,18 +211,18 @@ body {
     font-size: 3.3rem;
     font-weight: 800;
     line-height: 1.2;
-    background: linear-gradient(to right, #FFFFFF, #e1f5fe);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #ffffff;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 174, 239, 0.4);
 }
 
 .tagline {
     font-size: 1.2rem;
     margin: 1rem 0 1.5rem;
-    color: #cbd5e6;
+    color: #ffffff;
     border-left: 3px solid #38b6ff;
     padding-left: 1rem;
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.8);
+    font-weight: 500;
 }
 
 .trust-badge {
@@ -346,7 +374,7 @@ body {
 
 .feature-card h3 {
     font-size: 1.4rem;
-    color: #1a2a30;
+    color: #0d3a71;
     margin-bottom: 1rem;
     font-weight: 700;
 }
@@ -366,10 +394,11 @@ body {
     position: relative;
     display: inline-block;
     width: 100%;
+    color: #0f2a4d;
 }
 
 .section-title span {
-    background: linear-gradient(120deg, #fff, #b3e5fc);
+    background: linear-gradient(120deg, #0d4fa8, #0077cc);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -660,28 +689,57 @@ body {
 }
 
 .booking-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.booking-form .form-group {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
+    align-items: center;
+}
+
+.booking-form .full-width {
+    grid-column: 1 / -1;
+}
+
+.form-icon {
+    position: absolute;
+    left: 1rem;
+    color: #38b6ff;
+    z-index: 2;
+    font-size: 1.1rem;
+    pointer-events: none;
 }
 
 .booking-form input,
 .booking-form select {
-    padding: 1rem 1.2rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(0, 0, 0, 0.4);
-    color: #eef5ff;
+    width: 100%;
+    padding: 1rem 1.2rem 1rem 2.8rem;
+    border-radius: 8px;
+    border: 2px solid rgba(56, 182, 255, 0.5);
+    background: rgba(255, 255, 255, 0.95);
+    /* Very bright background for clear visibility */
+    color: #0a0f1c;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     outline: none;
-    transition: border-color 0.3s, background 0.3s;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.booking-form input::placeholder {
+    color: #4a5568;
+    opacity: 1;
+    font-weight: 500;
 }
 
 .booking-form input:focus,
 .booking-form select:focus {
     border-color: #38b6ff;
-    background: rgba(0, 0, 0, 0.6);
+    background: #ffffff;
+    box-shadow: 0 0 12px rgba(56, 182, 255, 0.6);
 }
 
 .booking-form option {
@@ -702,12 +760,12 @@ body {
     top: 150%;
     left: 50%;
     transform: translateX(-50%) translateY(10px);
-    background: rgba(10, 15, 28, 0.95);
-    backdrop-filter: blur(10px);
-    min-width: 160px;
+    background: #0d1b2a;
+    /* Solid background for visibility */
+    min-width: 220px;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(56, 182, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    border: 2px solid #38b6ff;
     z-index: 100;
     transition: all 0.3s ease;
     display: flex;
@@ -721,24 +779,30 @@ body {
     transform: translateX(-50%) translateY(0);
 }
 
-.dropdown-content a {
-    color: #eef5ff;
-    padding: 0.8rem 1.2rem;
+.dropdown-content a,
+.nav-links .dropdown-content a.nav-item {
+    color: #ffffff !important;
+    padding: 1rem 1.5rem;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     transition: background 0.2s, color 0.2s;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .dropdown-content a::after {
     display: none;
 }
 
-.dropdown-content a:hover {
-    background: rgba(56, 182, 255, 0.1);
-    color: #5cd6ff;
+.dropdown-content a:hover,
+.dropdown-content a:active,
+.dropdown-content a:focus,
+.nav-links .dropdown-content a.nav-item:hover,
+.nav-links .dropdown-content a.nav-item.active {
+    background: rgba(56, 182, 255, 0.25) !important;
+    color: #38b6ff !important;
 }
 
 /* About Us Section */
@@ -762,10 +826,7 @@ body {
 .about-content h3 {
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
-    background: linear-gradient(to right, #FFFFFF, #e1f5fe);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #0d3a71;
 }
 
 .about-content p {
@@ -967,7 +1028,7 @@ body {
 .window-content h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #38b6ff;
+    color: #0d3a71;
 }
 
 .window-points {
@@ -1031,7 +1092,17 @@ body {
 
     .navbar {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
+        border-radius: 20px;
+        padding: 1.5rem;
+        position: relative;
+        top: 0;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
     }
 
     .hero-left h1 {
@@ -1069,6 +1140,10 @@ body {
         overflow-x: auto;
         justify-content: center;
     }
+
+    .booking-form {
+        grid-template-columns: 1fr;
+    }
 }
 
 .page-section {
@@ -1086,9 +1161,9 @@ body {
     border: 2px solid rgba(56, 182, 255, 0.3);
     border-radius: 24px;
     background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     scrollbar-width: thin;
-    scrollbar-color: #38b6ff rgba(0,0,0,0.5);
+    scrollbar-color: #38b6ff rgba(0, 0, 0, 0.5);
 }
 
 .brochure-container-vertical::-webkit-scrollbar {
@@ -1096,7 +1171,7 @@ body {
 }
 
 .brochure-container-vertical::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .brochure-container-vertical::-webkit-scrollbar-thumb {
@@ -1135,32 +1210,16 @@ body {
 }
 
 .gallery-scroll-container {
-    display: flex;
-    overflow-x: auto;
+    display: block;
+    overflow: hidden;
     padding: 1rem 0 2rem 0;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-    scrollbar-color: #38b6ff rgba(0,0,0,0.5);
-}
-
-.gallery-scroll-container::-webkit-scrollbar {
-    height: 10px;
-}
-
-.gallery-scroll-container::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.5);
-    border-radius: 10px;
-}
-
-.gallery-scroll-container::-webkit-scrollbar-thumb {
-    background: #38b6ff;
-    border-radius: 10px;
 }
 
 .gallery-scroller {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    padding: 0 10px;
+    padding: 0;
 }
 
 .gallery-scroller.manual-scroll {
@@ -1169,8 +1228,7 @@ body {
 }
 
 .gallery-item {
-    flex: 0 0 min(85vw, 350px);
-    scroll-snap-align: center;
+    width: 100%;
     border-radius: 22px;
     overflow: hidden;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
@@ -1211,9 +1269,11 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+
 .image-modal-overlay.show {
     opacity: 1;
 }
+
 .image-modal-content {
     max-width: 90%;
     max-height: 90vh;
@@ -1222,9 +1282,11 @@ body {
     transform: scale(0.8);
     transition: transform 0.3s ease;
 }
+
 .image-modal-overlay.show .image-modal-content {
     transform: scale(1);
 }
+
 .close-image-modal {
     position: absolute;
     top: 20px;
@@ -1236,6 +1298,7 @@ body {
     transition: 0.3s;
     z-index: 10000;
 }
+
 .close-image-modal:hover {
     color: #38b6ff;
 }
@@ -1254,3 +1317,199 @@ body {
     }
 }
 
+/* Light theme and white background overrides */
+.bg-animation,
+.noise-overlay {
+    display: none !important;
+}
+
+body {
+    background-color: #ffffff;
+    color: #1b2b3c;
+}
+
+.container {
+    background: #ffffff;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    box-shadow: 0 15px 40px rgba(15, 50, 100, 0.08) !important;
+}
+
+.nav-links a {
+    color: #475569 !important;
+}
+
+.nav-links a:hover {
+    color: #0d3a71 !important;
+}
+
+.nav-links a.active,
+.nav-links a.active:hover {
+    color: #0d3a71 !important;
+}
+
+.nav-links a::after {
+    background: linear-gradient(90deg, #0d3a71, #0077cc);
+}
+
+.brand-name {
+    background: linear-gradient(135deg, #0d3a71, #0077cc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+.trust-badge {
+    background: #eff8ff;
+    border: 1px solid #bae6fd;
+    color: #0f2a50;
+}
+
+.btn-primary {
+    background: #0077cc;
+    color: #ffffff;
+}
+
+.btn-outline {
+    border: 1.5px solid #0077cc;
+    background: transparent;
+    color: #0077cc;
+}
+
+.btn-outline:hover {
+    background: rgba(0, 119, 204, 0.08);
+}
+
+.hero-right,
+.about-section,
+.card,
+.window-row,
+.booking-section,
+.contact-card,
+.brochure-container-vertical,
+.gallery-item {
+    background: #f8fbff !important;
+    color: #1b2b3c !important;
+    border-color: #dbeafe !important;
+}
+
+.hero-right {
+    border: 1px solid #dbeafe !important;
+    box-shadow: 0 12px 30px rgba(15, 51, 102, 0.08);
+}
+
+.feature-card {
+    background: #ffffff;
+    color: #0f2133;
+    box-shadow: 0 10px 25px rgba(15, 40, 80, 0.08);
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #dbeafe;
+    color: #0f2133;
+}
+
+.card p,
+.about-content p,
+.window-points li,
+.contact-item,
+.footer-col p,
+.footer-col ul li a,
+.brochure-card,
+.brochure-image,
+.gallery-item img,
+.booking-form input,
+.booking-form select,
+.address,
+.gst,
+.phone-link {
+    color: #334155 !important;
+}
+
+.phone-link {
+    font-weight: 600;
+}
+
+.phone-link:hover {
+    color: #0d4fa8 !important;
+}
+
+.hero-left h1 {
+    background: linear-gradient(135deg, #0d3a71, #0077cc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+}
+
+.tagline {
+    color: #0f4fa8;
+    font-weight: 600;
+    text-shadow: none;
+}
+
+.card:hover,
+.feature-card:hover,
+.gallery-item:hover,
+.brochure-card:hover {
+    box-shadow: 0 18px 40px rgba(15, 50, 100, 0.12);
+}
+
+.contact-card,
+.booking-section {
+    border: 1px solid #dbeafe;
+}
+
+.main-footer {
+    background: #f8fbff;
+    border-top: 1px solid #e2e8f0;
+    color: #475569;
+}
+
+.footer-col h4 {
+    color: #142a47;
+}
+
+.footer-col ul li a {
+    color: #475569;
+}
+
+.footer-col ul li a:hover {
+    color: #0d4fa8;
+}
+
+.social-icon {
+    background: rgba(0, 119, 204, 0.1);
+    color: #0d4fa8;
+}
+
+.footer-bottom {
+    color: #64748b;
+}
+
+.brochure-container-vertical {
+    background: #ffffff !important;
+}
+
+.brochure-card {
+    background: #f8fbff;
+}
+
+.window-row {
+    background: #f8fbff !important;
+}
+
+.about-image-card {
+    box-shadow: 0 18px 45px rgba(15, 50, 100, 0.08);
+}
+
+.image-overlay-card,
+.window-caption {
+    background: rgba(255, 255, 255, 0.92);
+    color: #0d3a71;
+}
