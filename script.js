@@ -58,9 +58,43 @@ pageAnchors.forEach(item => {
                 targetPage.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 50);
+
+            // Close mobile menu if open
+            const navLinksContainer = document.querySelector('.nav-links');
+            const mobileMenuBtn = document.getElementById('mobile-menu');
+            if (navLinksContainer && navLinksContainer.classList.contains('active')) {
+                navLinksContainer.classList.remove('active');
+                if (mobileMenuBtn) {
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            }
         }
     });
 });
+
+// Mobile Menu Toggle
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenu && navLinks) {
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileMenu.querySelector('i');
+        if (icon) {
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    });
+}
 
 // also click on product cards? not needed but great experience: show simple toast style msg (soft)
 const cards = document.querySelectorAll('.card');
