@@ -25,6 +25,9 @@
                 <img src="images/logo.png" alt="Jaguar UPVC Logo" class="site-logo"
                     style="background-color: transparent;">
             </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
             <div class="nav-links">
                 <a href="#home" class="nav-item active">Home</a>
                 <a href="#about" class="nav-item">About Us</a>
@@ -314,200 +317,169 @@
                             class="fas fa-file-pdf"></i> View Brochure</a>
                 </div>
 
-                <div class="brochure-container-vertical scroll-reveal">
-                    <div class="brochure-vertical-scroller" id="brochureScroller">
-                        <div class="brochure-card zoomable">
-                            <img src="broucher/jaguar-sliding-series-page-1.webp.png"
-                                alt="Jaguar Sliding Series Brochure" class="brochure-image">
-                        </div>
-                        <div class="brochure-card zoomable">
-                            <img src="broucher/jaguar-sliding-series-page-2.webp.png"
-                                alt="Jaguar Sliding Series Brochure" class="brochure-image">
-                        </div>
-                        <div class="brochure-card zoomable">
-                            <img src="broucher/jaguar-sliding-series-page-3.webp.png"
-                                alt="Jaguar Sliding Series Brochure" class="brochure-image">
-                        </div>
-                        <div class="brochure-card zoomable">
-                            <img src="broucher/jaguar-sliding-series-page-4.webp.png"
-                                alt="Jaguar Sliding Series Brochure" class="brochure-image">
-                        </div>
+        </div>
+    </div>
 
-                        <!-- Duplicated for infinite scroll effect -->
-                        <div class="brochure-card zoomable">
-                            <img src="broucher/jaguar-sliding-series-page-1.webp.png"
-                                alt="Jaguar Sliding Series Brochure" class="brochure-image">
+    </section>
+    <!-- Gallery Page -->
+    <section class="page-section" id="gallery" style="display:none;">
+        <div class="section-title scroll-reveal"><span>Our Gallery</span> <i class="fas fa-images"
+                style="color:#00AEEF;"></i></div>
+        <div class="gallery-scroll-container scroll-reveal">
+            <div class="gallery-scroller manual-scroll">
+                <div class="gallery-item zoomable"><img src="images/gallery/image1.png" alt="Gallery Image 1">
+                </div>
+                <div class="gallery-item zoomable"><img src="images/gallery/image2.png" alt="Gallery Image 2">
+                </div>
+                <div class="gallery-item zoomable"><img src="images/gallery/image3.png" alt="Gallery Image 3">
+                </div>
+                <div class="gallery-item zoomable"><img src="images/gallery/image4.png" alt="Gallery Image 4">
+                </div>
+                <div class="gallery-item zoomable"><img src="images/gallery/image5.png" alt="Gallery Image 5">
+                </div>
+                <div class="gallery-item zoomable"><img src="images/gallery/image6.png" alt="Gallery Image 6">
+                </div>
+                <div class="gallery-item zoomable"><img src="images/gallery/image7.png" alt="Gallery Image 7">
+                </div>
+                <div class="gallery-item zoomable"><img src="images/gallery/image8.png" alt="Gallery Image 8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Page -->
+    <section class="page-section" id="booking" style="display:none;">
+        <!-- Booking Section -->
+        <div class="section-title scroll-reveal"><span>Book a Consultation</span> <i class="fas fa-calendar-check"
+                style="color:#ffcd7e;"></i></div>
+        <div class="booking-section scroll-reveal">
+            <form class="booking-form" id="consultation-form">
+                <div class="form-group">
+                    <i class="fas fa-user form-icon"></i>
+                    <input type="text" id="custName" placeholder="Your Full Name" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-phone-alt form-icon"></i>
+                    <input type="tel" id="custMobile" placeholder="Your Mobile Number" pattern="[0-9]{10}"
+                        title="Must be a 10-digit number" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-map-marker-alt form-icon"></i>
+                    <input type="text" id="custLocation" placeholder="Your Location" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-clipboard-list form-icon"></i>
+                    <select id="custReq" required>
+                        <option value="" disabled selected>Type of Requirement</option>
+                        <option value="uPVC Windows">uPVC Windows</option>
+                        <option value="Sliding Windows">Sliding Windows</option>
+                        <option value="Casement Windows">Casement Windows</option>
+                        <option value="uPVC Doors">uPVC Doors</option>
+                        <option value="Balcony Doors">Balcony Doors</option>
+                        <option value="Office Partitions">Office Partitions</option>
+                    </select>
+                </div>
+
+
+                <button type="submit" class="btn-primary full-width" id="submitBtn"
+                    style="width: 100%; border:none; padding: 1rem; font-size: 1.1rem; margin-top: 0.5rem; position: relative;">
+                    <span class="btn-text"><i class="fas fa-paper-plane"></i> Submit Booking Request</span>
+                    <span class="btn-loader" style="display: none;"><i class="fas fa-spinner fa-spin"></i>
+                        Processing...</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section class="page-section" id="contact" style="display:none;">
+        <!-- Contact & Info Section (with all data from image: phone, address, gst) -->
+        <div class="contact-section scroll-reveal">
+            <div class="contact-cards-container">
+                <div class="contact-card">
+                    <h3><i class="fas fa-headset"></i> Get In Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div><strong>Call / WhatsApp:</strong><br> <a href="tel:8639109250" class="phone-link"
+                                style="text-decoration:none;">8639109250</a> , <a href="tel:9059055093"
+                                class="phone-link" style="text-decoration:none;">9059055093</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><strong>Email:</strong><br> jaguar.upvc@premium.in</div>
+                    </div>
+                    <div class="contact-item align-start">
+                        <div class="address">
+                            <strong style="display: flex; align-items: center; gap: 8px; color: #38b6ff;"><i
+                                    class="fas fa-map-marker-alt"></i> Showroom & Office:</strong>
+                            <span style="display:block; margin-top: 5px; line-height: 1.6;">6-1C, Plot No. 126, Santhi Nagar, Utukur, Kadapa, Utukuru, Andhra Pradesh 516003</span>
                         </div>
-                        <div class="brochure-card zoomable">
-                            <img src="broucher/jaguar-sliding-series-page-2.webp.png"
-                                alt="Jaguar Sliding Series Brochure" class="brochure-image">
-                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div><strong>Business Hours:</strong><br> Mon-Sat: 9AM - 6PM</div>
+                    </div>
+                    <div class="trust-badge" style="margin-top:1rem; background: #00d4af10; border-radius:30px;">
+                        <i class="fas fa-check-circle"></i> 10+ years of excellence | ISO 9001 certified
+                    </div>
+                    <div style="margin-top:1rem;">
+                        <div class="gst">GSTIN: 37DURPG1270C1ZP</div>
                     </div>
                 </div>
 
-            </section>
-            <!-- Gallery Page -->
-            <section class="page-section" id="gallery" style="display:none;">
-                <div class="section-title scroll-reveal"><span>Our Gallery</span> <i class="fas fa-images"
-                        style="color:#00AEEF;"></i></div>
-                <div class="gallery-scroll-container scroll-reveal">
-                    <div class="gallery-scroller manual-scroll">
-                        <div class="gallery-item zoomable"><img src="images/gallery/image1.png" alt="Gallery Image 1">
-                        </div>
-                        <div class="gallery-item zoomable"><img src="images/gallery/image2.png" alt="Gallery Image 2">
-                        </div>
-                        <div class="gallery-item zoomable"><img src="images/gallery/image3.png" alt="Gallery Image 3">
-                        </div>
-                        <div class="gallery-item zoomable"><img src="images/gallery/image4.png" alt="Gallery Image 4">
-                        </div>
-                        <div class="gallery-item zoomable"><img src="images/gallery/image5.png" alt="Gallery Image 5">
-                        </div>
-                        <div class="gallery-item zoomable"><img src="images/gallery/image6.png" alt="Gallery Image 6">
-                        </div>
-                        <div class="gallery-item zoomable"><img src="images/gallery/image7.png" alt="Gallery Image 7">
-                        </div>
-                        <div class="gallery-item zoomable"><img src="images/gallery/image8.png" alt="Gallery Image 8">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Booking Page -->
-            <section class="page-section" id="booking" style="display:none;">
-                <!-- Booking Section -->
-                <div class="section-title scroll-reveal"><span>Book a Consultation</span> <i
-                        class="fas fa-calendar-check" style="color:#ffcd7e;"></i></div>
-                <div class="booking-section scroll-reveal">
-                    <form class="booking-form" id="consultation-form">
-                        <div class="form-group">
-                            <i class="fas fa-user form-icon"></i>
-                            <input type="text" id="custName" placeholder="Your Full Name" required>
-                        </div>
-                        <div class="form-group">
-                            <i class="fas fa-phone-alt form-icon"></i>
-                            <input type="tel" id="custMobile" placeholder="Your Mobile Number" pattern="[0-9]{10}"
-                                title="Must be a 10-digit number" required>
-                        </div>
-                        <div class="form-group">
-                            <i class="fas fa-map-marker-alt form-icon"></i>
-                            <input type="text" id="custLocation" placeholder="Your Location" required>
-                        </div>
-                        <div class="form-group">
-                            <i class="fas fa-clipboard-list form-icon"></i>
-                            <select id="custReq" required>
-                                <option value="" disabled selected>Type of Requirement</option>
-                                <option value="uPVC Windows">uPVC Windows</option>
-                                <option value="Sliding Windows">Sliding Windows</option>
-                                <option value="Casement Windows">Casement Windows</option>
-                                <option value="uPVC Doors">uPVC Doors</option>
-                                <option value="Balcony Doors">Balcony Doors</option>
-                                <option value="Office Partitions">Office Partitions</option>
-                            </select>
-                        </div>
-
-
-                        <button type="submit" class="btn-primary full-width" id="submitBtn"
-                            style="width: 100%; border:none; padding: 1rem; font-size: 1.1rem; margin-top: 0.5rem; position: relative;">
-                            <span class="btn-text"><i class="fas fa-paper-plane"></i> Submit Booking Request</span>
-                            <span class="btn-loader" style="display: none;"><i class="fas fa-spinner fa-spin"></i>
-                                Processing...</span>
-                        </button>
-                    </form>
-                </div>
-            </section>
-
-            <!-- Contact Page -->
-            <section class="page-section" id="contact" style="display:none;">
-                <!-- Contact & Info Section (with all data from image: phone, address, gst) -->
-                <div class="contact-section scroll-reveal">
-                    <div class="contact-cards-container">
-                        <div class="contact-card">
-                            <h3><i class="fas fa-headset"></i> Get In Touch</h3>
-                            <div class="contact-item">
-                                <i class="fas fa-phone-alt"></i>
-                                <div><strong>Call / WhatsApp:</strong><br> <a href="tel:8639109250"
-                                        class="phone-link" style="text-decoration:none;">8639109250</a> , <a
-                                        href="tel:9059055093"
-                                        class="phone-link" style="text-decoration:none;">9059055093</a></div>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <div><strong>Email:</strong><br> jaguar.upvc@premium.in</div>
-                            </div>
-                            <div class="contact-item align-start">
-                                <div class="address">
-                                    <strong style="display: flex; align-items: center; gap: 8px; color: #38b6ff;"><i
-                                            class="fas fa-map-marker-alt"></i> Showroom & Office:</strong>
-                                    <span style="display:block; margin-top: 5px; line-height: 1.6;">#6-1C, Plot No.126,
-                                        Santhi Nagar, Utukur Village, C.K.Dinne (M), YSR Kadapa.</span>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-clock"></i>
-                                <div><strong>Business Hours:</strong><br> Mon-Sat: 9AM - 6PM</div>
-                            </div>
-                            <div class="trust-badge"
-                                style="margin-top:1rem; background: #00d4af10; border-radius:30px;">
-                                <i class="fas fa-check-circle"></i> 10+ years of excellence | ISO 9001 certified
-                            </div>
-                            <div style="margin-top:1rem;">
-                                <div class="gst">GSTIN: 37DURPG1270C1ZP</div>
-                            </div>
-                        </div>
-
-                        <div class="contact-card map-card">
-                            <h3><i class="fas fa-map-marked-alt"></i> Find Us</h3>
-                            <div class="map-container">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15444.694666324227!2d78.815777!3d14.474665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb3720743604825%3A0xc0fb106f359c2ea5!2sKadapa%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </div> <!-- end pages-container -->
-
-        <footer class="main-footer">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>JAGUAR UPVC</h4>
-                    <p>India's premier manufacturer of UPVC doors and windows. Designed for strength & elegance.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#windows">UPVC Windows</a></li>
-                        <li><a href="#products">UPVC Doors</a></li>
-                        <li><a href="#products">Sliding Systems</a></li>
-                        <li><a href="#booking">Book Consultation</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Social Media</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-
+                <div class="contact-card map-card">
+                    <h3><i class="fas fa-map-marked-alt"></i> Find Us</h3>
+                    <div class="map-container">
+                        <iframe
+                            src="https://maps.google.com/maps?q=Jaguar%20UPVC,%206-1C,%20Plot%20No.%20126,%20Santhi%20Nagar,%20Utukur,%20Kadapa,%20Utukuru,%20Andhra%20Pradesh%20516003&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 JAGUAR UPVC — Premium Doors & Windows | India's Most Trusted Brand | YSR Kadapa</p>
+        </div>
+    </section>
+
+    </div> <!-- end pages-container -->
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>JAGUAR UPVC</h4>
+                <p>India's premier manufacturer of UPVC doors and windows. Designed for strength & elegance.</p>
             </div>
-        </footer>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#windows">UPVC Windows</a></li>
+                    <li><a href="#products">UPVC Doors</a></li>
+                    <li><a href="#products">Sliding Systems</a></li>
+                    <li><a href="#booking">Book Consultation</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 JAGUAR UPVC — Premium Doors & Windows | India's Most Trusted Brand | YSR Kadapa</p>
+        </div>
+    </footer>
     </div>
 
     <!-- Success Popup Overlay -->
