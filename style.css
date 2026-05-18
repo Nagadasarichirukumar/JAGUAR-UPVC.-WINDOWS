@@ -1135,8 +1135,16 @@ body {
     .nav-links.active {
         display: flex;
     }
-    
-    .nav-dropdown:hover .dropdown-content {
+    .nav-dropdown {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-dropdown .dropdown-content {
+        visibility: visible;
+        opacity: 1;
         position: relative;
         transform: none;
         top: 0;
@@ -1145,14 +1153,16 @@ body {
         border: none;
         background: transparent;
         width: 100%;
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        padding-top: 0.5rem;
     }
     
-    .dropdown-content {
-        position: relative;
-        transform: none;
-        top: 0;
-        left: 0;
+    .dropdown-content a, 
+    .nav-links .dropdown-content a.nav-item {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
     }
 
     .hero-left h1 {
