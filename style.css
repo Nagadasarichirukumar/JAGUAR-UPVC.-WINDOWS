@@ -799,6 +799,69 @@ body {
     font-weight: 700;
 }
 
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .site-logo {
+        height: 56px;
+        max-width: 140px;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    .logo-area {
+        gap: 10px;
+    }
+
+    .navbar {
+        padding: 0.6rem 1rem;
+        border-radius: 40px;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 1rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .hero-right {
+        flex: 1 1 100%;
+        padding: 1rem;
+        border-radius: 20px;
+    }
+
+    .hero-image-card {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .hero-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* Make gallery and feature images scale proportionally on narrow screens */
+    .gallery-item img,
+    .feature-card img,
+    .about-img {
+        height: auto !important;
+        max-height: 320px;
+    }
+}
+
 .dropdown-content a::after {
     display: none;
 }
@@ -1119,6 +1182,44 @@ body {
         align-items: center;
         width: 100%;
         margin-bottom: 0;
+        gap: 0;
+    }
+
+    .site-logo {
+        height: 55px;
+        max-width: 120px;
+        margin-right: -10px !important;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+        white-space: nowrap;
+    }
+
+    .hero {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem 0;
+    }
+
+    .hero-left,
+    .hero-right {
+        width: 100%;
+        flex: none;
+    }
+
+    .hero-right {
+        padding: 1rem;
+        margin-top: 1rem;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .hero-image-card {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 20px;
     }
 
     .nav-links {
@@ -1135,6 +1236,7 @@ body {
     .nav-links.active {
         display: flex;
     }
+
     .nav-dropdown {
         width: 100%;
         display: flex;
@@ -1158,8 +1260,8 @@ body {
         align-items: center;
         padding-top: 0.5rem;
     }
-    
-    .dropdown-content a, 
+
+    .dropdown-content a,
     .nav-links .dropdown-content a.nav-item {
         padding: 0.8rem 1rem;
         font-size: 1rem;
